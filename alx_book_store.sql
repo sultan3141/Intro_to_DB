@@ -1,13 +1,9 @@
-
 -- =====================================
 -- Database: alx_book_store
 -- =====================================
 
--- Drop the database if it exists
-DROP DATABASE IF EXISTS alx_book_store;
-
--- Create the database
-CREATE DATABASE alx_book_store;
+-- Create database if it does not exist
+CREATE DATABASE IF NOT EXISTS alx_book_store;
 
 -- Use the database
 USE alx_book_store;
@@ -15,9 +11,7 @@ USE alx_book_store;
 -- =====================================
 -- Table: Authors
 -- =====================================
-DROP TABLE IF EXISTS Authors;
-
-CREATE TABLE Authors (
+CREATE TABLE IF NOT EXISTS Authors (
     author_id INT PRIMARY KEY AUTO_INCREMENT,
     author_name VARCHAR(215) NOT NULL
 );
@@ -25,9 +19,7 @@ CREATE TABLE Authors (
 -- =====================================
 -- Table: Books
 -- =====================================
-DROP TABLE IF EXISTS Books;
-
-CREATE TABLE Books (
+CREATE TABLE IF NOT EXISTS Books (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(130) NOT NULL,
     author_id INT NOT NULL,
@@ -39,9 +31,7 @@ CREATE TABLE Books (
 -- =====================================
 -- Table: Customers
 -- =====================================
-DROP TABLE IF EXISTS Customers;
-
-CREATE TABLE Customers (
+CREATE TABLE IF NOT EXISTS Customers (
     customer_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(215) NOT NULL,
     email VARCHAR(215) NOT NULL,
@@ -51,9 +41,7 @@ CREATE TABLE Customers (
 -- =====================================
 -- Table: Orders
 -- =====================================
-DROP TABLE IF EXISTS Orders;
-
-CREATE TABLE Orders (
+CREATE TABLE IF NOT EXISTS Orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT NOT NULL,
     order_date DATE,
@@ -63,9 +51,7 @@ CREATE TABLE Orders (
 -- =====================================
 -- Table: Order_Details
 -- =====================================
-DROP TABLE IF EXISTS Order_Details;
-
-CREATE TABLE Order_Details (
+CREATE TABLE IF NOT EXISTS Order_Details (
     orderdetailid INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,
     book_id INT NOT NULL,
@@ -73,3 +59,4 @@ CREATE TABLE Order_Details (
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
+
