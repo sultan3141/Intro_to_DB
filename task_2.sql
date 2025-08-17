@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS Books(
   book_id INT PRIMARY KEY,
   title VARCHAR(130),
-  author_id FOREIGN KEY REFERENCING Authors TABLE,
+  author_id INT,
+  FOREIGN KEY author_id REFERENCING Authors(author_id),
   price DOUBLE,
   publication_date DATE
   );
@@ -18,12 +19,13 @@ CREATE TABLE IF NOT EXISTS Customers(
 );
 CREATE TABLE IF NOT EXISTS Orders(
  order_id INT PRIMARY KEY,
- customer_id FOREIGN KEY REFERENCING Customers TABLE,
+ customer_id INT,
+ FOREIGN KEY customer_id REFERENCING Customers(customer_id),
  order_date DATE
 );
 CREATE TABLE IF NOT EXISTS Order_Details(
  orderdetailid INT PRIMARY KEY,
- order_id FOREIGN KEY REFERENCING Orders TABLE,
- book_id FOREIGN KEY REFERENCING Books TABLE,
+ FOREIGN KEY order_id REFERENCING Orders(order_id),
+ FOREIGN KEY book_id REFERENCING Books(book_id),
  quantity DOUBLE
-  );
+);
